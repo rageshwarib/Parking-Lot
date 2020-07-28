@@ -7,30 +7,40 @@ public class ParkingLotTest {
     Car car = new Car();
 
     @Test
-    public void givenCar_whenParked_shouldReturnTrue()  {
+    public void givenCar_whenParked_shouldReturnTrue() throws ParkingLotException {
         ParkinglotSystem parkingLotSystem = new ParkinglotSystem();
+        parkingLotSystem.ParkingLotSystem(1);
         boolean isParked = parkingLotSystem.parkCar(car);
         Assert.assertTrue(isParked);
     }
     @Test
-    public void givenCar_WhenAlreadyParked_shouldReturnFalse() {
+    public void givenCar_WhenAlreadyParked_shouldReturnFalse() throws ParkingLotException {
         ParkinglotSystem parkingLotSystem = new ParkinglotSystem();
-        parkingLotSystem.parkCar(car);
-        boolean isParked = parkingLotSystem.parkCar(car);
-        Assert.assertFalse(isParked);
+        parkingLotSystem.ParkingLotSystem(2);
+        try {
+            parkingLotSystem.parkCar(car);
+            boolean isParked = parkingLotSystem.parkCar(car);
+        } catch (ParkingLotException e) {
+            Assert.assertEquals("Parking is full", e.getMessage());
+        }
     }
     @Test
-    public void givenCar_WhenUnParked_ShouldReturnTrue() {
+    public void givenCar_WhenUnParked_ShouldReturnTrue() throws ParkingLotException {
         ParkinglotSystem parkingLotSystem = new ParkinglotSystem();
+        parkingLotSystem.ParkingLotSystem(1);
         parkingLotSystem.parkCar(car);
-        boolean isUnParked = parkingLotSystem.unParkCar(car);
-        Assert.assertTrue(isUnParked);
+        Object isUnParked = parkingLotSystem.unParkCar(car);
+        Assert.assertEquals(car, isUnParked);
     }
     @Test
-    public void givenCar_WhenAlreadyUnParked_ShouldReturnFalse() {
+    public void givenCar_WhenAlreadyUnParked_ShouldReturnFalse() throws ParkingLotException {
         ParkinglotSystem parkingLotSystem = new ParkinglotSystem();
-        parkingLotSystem.parkCar(new Car());
-        boolean isUnParked = parkingLotSystem.unParkCar(car);
-        Assert.assertFalse(isUnParked);
+        parkingLotSystem.ParkingLotSystem(1);
+        try {
+            parkingLotSystem.parkCar(new Car());
+            Object isUnParked = parkingLotSystem.unParkCar(car);
+        } catch (ParkingLotException e) {
+            Assert.assertEquals("The car is not parked here", e.getMessage());
+        }
     }
 }

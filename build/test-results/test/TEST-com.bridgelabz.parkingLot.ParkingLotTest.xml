@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.parkingLot.ParkingLotTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-07-28T12:16:12" hostname="rageshwari-PC" time="0.003">
+<testsuite name="com.bridgelabz.parkingLot.ParkingLotTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-28T12:46:36" hostname="rageshwari-PC" time="0.002">
   <properties/>
-  <testcase name="givenCar_whenParked_shouldReturnTrue" classname="com.bridgelabz.parkingLot.ParkingLotTest" time="0.002"/>
-  <testcase name="givenCar_WhenAlreadyUnParked_ShouldReturnFalse" classname="com.bridgelabz.parkingLot.ParkingLotTest" time="0.0"/>
-  <testcase name="givenCar_WhenUnParked_ShouldReturnTrue" classname="com.bridgelabz.parkingLot.ParkingLotTest" time="0.0"/>
-  <testcase name="givenCar_WhenAlreadyParked_shouldReturnFalse" classname="com.bridgelabz.parkingLot.ParkingLotTest" time="0.0"/>
+  <testcase name="givenCar_WhenAlreadyUnParked_ShouldReturnFalse" classname="com.bridgelabz.parkingLot.ParkingLotTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

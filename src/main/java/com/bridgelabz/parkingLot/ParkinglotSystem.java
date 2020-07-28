@@ -1,20 +1,49 @@
 package com.bridgelabz.parkingLot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ParkinglotSystem {
     private Car car;
+    private int capacity;
+    private int spaceAvailable;
+    private Owner owner;
 
-    public boolean parkCar(Car car) {
-        if(this.car != null)
-            return false;
-        this.car = car;
-        return true;
+    List<Object> carsList = new ArrayList<>();
+
+    public void ParkingLotSystem(int capacity) {
+        this.capacity = capacity;
+        this.spaceAvailable = capacity;
+        this.owner = owner;
+    }
+    public void ParkingLotSystem(int capacity, Owner owner) {
+        this.capacity = capacity;
+        this.spaceAvailable = capacity;
+        this.owner = owner;
     }
 
-    public boolean unParkCar(Car car) {
-        if(this.car.equals(car)) {
-            this.car = null;
+    public boolean parkCar(Car car) throws ParkingLotException {
+        if(spaceAvailable > 0) {
+            if (this.car != null) {
+                throw new ParkingLotException("Parking is full");
+            }
+            carsList.add(car);
+            if (carsList.size() == capacity) {
+                if (owner != null) {
+                    owner.setMessage("Parking lot is full");
+                }
+            }
+            spaceAvailable--;
             return true;
         }
-        return false;
+            throw new ParkingLotException("Parking lot is full");
+    }
+
+
+    public Object unParkCar(Car car)throws ParkingLotException {
+        if (carsList.contains(car)) {
+            return carsList.remove(carsList.indexOf(car));
+        }
+        throw new ParkingLotException("The car is not parked here");
     }
 }
