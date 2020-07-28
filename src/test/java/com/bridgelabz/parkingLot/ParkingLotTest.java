@@ -43,4 +43,15 @@ public class ParkingLotTest {
             Assert.assertEquals("The car is not parked here", e.getMessage());
         }
     }
+    @Test
+    public void givenParkingLot_WhenParkingLotIsFull_thenShouldNotifyToOwner() throws ParkingLotException {
+        ParkinglotSystem parkingLotSystem = new ParkinglotSystem();
+        Owner owner = new Owner();
+        parkingLotSystem.ParkingLotSystem(2, owner);
+        Car carOne = new Car();
+        Car carTwo = new Car();
+        parkingLotSystem.parkCar(carOne);
+        parkingLotSystem.parkCar(carTwo);
+        Assert.assertEquals("Parking lot is full", owner.getMessage());
+    }
 }
